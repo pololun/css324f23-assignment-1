@@ -49,6 +49,15 @@ def h1(s):
     return res
 
 def h3(s):
-    # implement this function
+    
     board, _, _ = s
-    return 0
+    goal = (1,2,3,4,5,6,7,8,0)
+    count = 0
+
+    for tile in range(1,9): 
+        tile_pos , goal_pos = board.index(tile),goal.index(tile)
+        tile_row , tile_col = tile_pos//3 , tile_pos%3
+        goal_row , goal_col = goal_pos//3 , goal_pos%3
+
+        count+=abs(tile_col-goal_col)+abs(tile_row-goal_row)
+    return count
